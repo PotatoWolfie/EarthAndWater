@@ -1,0 +1,60 @@
+{
+  "item.earth-and-water.brine_rod": "Brine Rod",
+  "item.earth-and-water.bore_rod": "Bore Rod",
+  "item.earth-and-water.steel_ingot": "Steel Ingot",
+  "item.earth-and-water.reinforced_key": "Reinforced Key",
+  "item.earth-and-water.spiked_shield_smithing_template": "Spiked Shield Smithing Template",
+  "item.earth-and-water.block_smithing_template": "Block Smithing Template",
+  "item.earth-and-water.guard_smithing_template": "Guard Smithing Template",
+  "item.earth-and-water.spiked_shield": "Spiked Shield",
+  "item.earth-and-water.whip": "Whip",
+  "item.earth-and-water.spear": "Spear",
+
+
+  "block.earth-and-water.steel_block": "Steel Block",
+  "block.earth-and-water.reinforced_spawner": "Reinforced Spawner",
+  "block.earth-and-water.oxygen_block": "Oxygen Block",
+  "block.earth-and-water.oxygen_bubble": "Oxygen Bubble",
+
+  "block.earth-and-water.andesite_bricks": "Andesite Bricks",
+  "block.earth-and-water.andesite_brick_stairs": "Andesite Brick Stairs",
+  "block.earth-and-water.andesite_brick_slab": "Andesite Brick Slab",
+  "block.earth-and-water.andesite_brick_wall": "Andesite Brick Wall",
+
+  "block.earth-and-water.dark_prismarine_pillar": "Dark Prismarine Pillar",
+  "block.earth-and-water.prismarine_pillar": "Prismarine Pillar",
+  "block.earth-and-water.chiseled_prismarine_bricks": "Chiseled Prismarine_bricks",
+  "block.earth-and-water.prismarine_tiles": "Prismarine Tiles",
+  "block.earth-and-water.prismarine_tile_stairs": "Prismarine Tile Stairs",
+  "block.earth-and-water.prismarine_tile_slab": "Prismarine Tile Slab",
+  "block.earth-and-water.prismarine_tile_wall": "Prismarine Tile Wall",
+
+  "block.earth-and-water.diorite_bricks": "Diorite Bricks",
+  "block.earth-and-water.diorite_brick_stairs": "Diorite Brick Stairs",
+  "block.earth-and-water.diorite_brick_slab": "Diorite Brick Slab",
+  "block.earth-and-water.diorite_brick_wall": "Diorite Brick Wall",
+
+
+  "block.earth-and-water.granite_bricks": "Granite Bricks",
+  "block.earth-and-water.granite_brick_stairs": "Granite Brick Stairs",
+  "block.earth-and-water.granite_brick_slab": "Granite Brick Slab",
+  "block.earth-and-water.granite_brick_wall": "Granite Brick Wall",
+
+
+  "block.earth-and-water.dripstone_bricks": "Dripstone Bricks",
+  "block.earth-and-water.dripstone_brick_stairs": "Dripstone Brick Stairs",
+  "block.earth-and-water.dripstone_brick_slab": "Dripstone Brick Slab",
+  "block.earth-and-water.dripstone_brick_wall": "Dripstone Brick Wall",
+
+  "block.earth-and-water.chiseled_dripstone_bricks": "Chiseled Dripstone Bricks",
+  "block.earth-and-water.dripstone_pillar": "Dripstone Pillar",
+
+  "block.earth-and-water.polished_dripstone": "Polished Dripstone",
+  "block.earth-and-water.polished_dripstone_stairs": "Polished Dripstone Stairs",
+  "block.earth-and-water.polished_dripstone_slab": "Polished Dripstone Slab",
+  "block.earth-and-water.polished_dripstone_wall": "Polished Dripstone Wall",
+
+  "block.earth-and-water.dripstone_stairs": "Dripstone Stairs",
+  "block.earth-and-water.dripstone_slab": "Dripstone Slab",
+  "block.earth-and-water.dripstone_wall": "Dripstone Wall"
+}
