@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "earth-and-water",
+	"version": "0.1.0",
+	"name": "Earth & Water",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Demidiant",
+		"PotatoWolfie"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "All Rights Reserved",
+	"icon": "assets/earth-and-water/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"potatowolfie.earth_and_water.EarthWater"
+		],
+		"fabric-datagen": [
+			"potatowolfie.earth_and_water.EarthWaterDataGenerator"
+		],
+		"client": [
+			"potatowolfie.earth_and_water.EarthWaterClient"
+		]
+	},
+	"mixins": [
+		"earth-and-water.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

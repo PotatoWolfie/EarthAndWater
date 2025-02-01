@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "earth-and-water:block/prismarine_tile_slab"
+    },
+    "type=double": {
+      "model": "earth-and-water:block/prismarine_tiles"
+    },
+    "type=top": {
+      "model": "earth-and-water:block/prismarine_tile_slab_top"
+    }
+  }
+}
