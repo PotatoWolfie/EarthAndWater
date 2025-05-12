@@ -3,18 +3,25 @@
   "item.earth-and-water.bore_rod": "Bore Rod",
   "item.earth-and-water.steel_ingot": "Steel Ingot",
   "item.earth-and-water.reinforced_key": "Reinforced Key",
-  "item.earth-and-water.spiked_shield_smithing_template": "Spiked Shield Smithing Template",
-  "item.earth-and-water.block_smithing_template": "Block Smithing Template",
-  "item.earth-and-water.guard_smithing_template": "Guard Smithing Template",
+  "tooltip.earth-and-water.reinforced_key": "Used to activate or deactivate Reinforced Spawners. Has 2 uses.",
+  "item.earth-and-water.spiked_shield_upgrade_smithing_template": "Smithing Template",
+  "item.earth-and-water.block_armor_trim_smithing_template": "Smithing Template",
+  "item.earth-and-water.guard_armor_trim_smithing_template": "Smithing Template",
   "item.earth-and-water.spiked_shield": "Spiked Shield",
   "item.earth-and-water.whip": "Whip",
-  "item.earth-and-water.spear": "Spear",
-
+  "item.earth-and-water.battle_axe": "Battle Axe",
+  "item.earth-and-water.earth_charge": "Earth Charge",
+  "item.earth-and-water.water_charge": "Water Charge",
 
   "block.earth-and-water.steel_block": "Steel Block",
+  "block.earth-and-water.mixed_prismarine_tiles": "Mixed Prismarine Tiles",
+  "block.earth-and-water.chiseled_dark_prismarine": "Chiseled Dark Prismarine",
   "block.earth-and-water.reinforced_spawner": "Reinforced Spawner",
   "block.earth-and-water.oxygen_block": "Oxygen Block",
   "block.earth-and-water.oxygen_bubble": "Oxygen Bubble",
+
+  "painting.earth-and-water.ruins.title": "Ruins",
+  "painting.earth-and-water.ruins.author": "Demidiant",
 
   "block.earth-and-water.andesite_bricks": "Andesite Bricks",
   "block.earth-and-water.andesite_brick_stairs": "Andesite Brick Stairs",
@@ -23,7 +30,7 @@
 
   "block.earth-and-water.dark_prismarine_pillar": "Dark Prismarine Pillar",
   "block.earth-and-water.prismarine_pillar": "Prismarine Pillar",
-  "block.earth-and-water.chiseled_prismarine_bricks": "Chiseled Prismarine_bricks",
+  "block.earth-and-water.chiseled_prismarine_bricks": "Chiseled Prismarine Bricks",
   "block.earth-and-water.prismarine_tiles": "Prismarine Tiles",
   "block.earth-and-water.prismarine_tile_stairs": "Prismarine Tile Stairs",
   "block.earth-and-water.prismarine_tile_slab": "Prismarine Tile Slab",
@@ -40,13 +47,32 @@
   "block.earth-and-water.granite_brick_slab": "Granite Brick Slab",
   "block.earth-and-water.granite_brick_wall": "Granite Brick Wall",
 
+  "block.earth-and-water.pointed_dark_dripstone": "Pointed Dark Dripstone",
 
   "block.earth-and-water.dripstone_bricks": "Dripstone Bricks",
   "block.earth-and-water.dripstone_brick_stairs": "Dripstone Brick Stairs",
   "block.earth-and-water.dripstone_brick_slab": "Dripstone Brick Slab",
   "block.earth-and-water.dripstone_brick_wall": "Dripstone Brick Wall",
 
+  "block.earth-and-water.dark_dripstone_block": "Dark Dripstone Block",
+  "block.earth-and-water.dark_dripstone_stairs": "Dark Dripstone Stairs",
+  "block.earth-and-water.dark_dripstone_slab": "Dark Dripstone Slab",
+  "block.earth-and-water.dark_dripstone_wall": "Dark Dripstone Wall",
+
+  "block.earth-and-water.polished_dark_dripstone": "Polished Dark Dripstone",
+  "block.earth-and-water.polished_dark_dripstone_stairs": "Polished Dark Dripstone Stairs",
+  "block.earth-and-water.polished_dark_dripstone_slab": "Polished Dark Dripstone Slab",
+  "block.earth-and-water.polished_dark_dripstone_wall": "Polished Dark Dripstone Wall",
+
+  "block.earth-and-water.dark_dripstone_bricks": "Dark Dripstone Bricks",
+  "block.earth-and-water.dark_dripstone_brick_stairs": "Dark Dripstone Brick Stairs",
+  "block.earth-and-water.dark_dripstone_brick_slab": "Dark Dripstone Brick Slab",
+  "block.earth-and-water.dark_dripstone_brick_wall": "Dark Dripstone Brick Wall",
+
+  "block.earth-and-water.dark_dripstone_pillar": "Dark Dripstone Pillar",
+
   "block.earth-and-water.chiseled_dripstone_bricks": "Chiseled Dripstone Bricks",
+  "block.earth-and-water.chiseled_dark_dripstone_bricks": "Chiseled Dark Dripstone Bricks",
   "block.earth-and-water.dripstone_pillar": "Dripstone Pillar",
 
   "block.earth-and-water.polished_dripstone": "Polished Dripstone",
@@ -56,5 +82,40 @@
 
   "block.earth-and-water.dripstone_stairs": "Dripstone Stairs",
   "block.earth-and-water.dripstone_slab": "Dripstone Slab",
-  "block.earth-and-water.dripstone_wall": "Dripstone Wall"
+  "block.earth-and-water.dripstone_wall": "Dripstone Wall",
+
+  "effect.earth-and-water.stun": "Stun",
+  "effect.earth-and-water.breath_giving": "Breath Giving",
+
+  "tag.item.earth-and-water.incorrect_for_prismarine_tool": "Incorrect for Prismarine Tool",
+  "tag.item.earth-and-water.incorrect_for_steel_tool": "Incorrect for Steel Tool",
+  "tag.item.earth-and-water.needs_prismarine_tool": "Needs Prismarine Tool",
+  "tag.item.earth-and-water.needs_steel_tool": "Needs Steel Tool",
+  "tag.item.earth-and-water.battle_axe_enchantable": "Battle Axe Enchantable",
+  "tag.item.earth-and-water.is_reinforced_spawner": "Is Reinforced Spawner",
+
+  "tooltip.earth-and-water.whip.tooltip1": "§7When Attacking Underwater:",
+  "tooltip.earth-and-water.whip.tooltip2": " §2Stuns Opponent",
+  "tooltip.earth-and-water.reinforced_spawner.tooltipempty": " ",
+  "tooltip.earth-and-water.reinforced_spawner.tooltip1": "§7Interact with Spawn Egg:",
+  "tooltip.earth-and-water.reinforced_spawner.tooltip2": " §9Sets Mob Type",
+  "tooltip.earth-and-water.reinforced_spawner.tooltip3": "§7Interact with Empty Hand:",
+  "tooltip.earth-and-water.reinforced_spawner.tooltip4": " §9Toggles Infinite Waves",
+  "tooltip.earth-and-water.spiked_shield_upgrade_smithing_template.tooltip1": "§7Spiked Shield Upgrade",
+  "tooltip.earth-and-water.spiked_shield_upgrade_smithing_template.tooltip2": " §9Shields",
+  "tooltip.earth-and-water.spiked_shield_upgrade_smithing_template.tooltip3": " §9Steel",
+  "tooltip.earth-and-water.armor_trim_template.tooltipempty": " ",
+  "tooltip.earth-and-water.armor_trim_template.tooltip1": "§7Applies to:",
+  "tooltip.earth-and-water.armor_trim_template.tooltip3": "§7Ingredients:",
+  "tooltip.earth-and-water.battle_axe.tooltip1": "§7On Right Click:",
+  "tooltip.earth-and-water.battle_axe.tooltip2": " §2Dash Forward",
+
+  "trim_pattern.earth-and-water.block": "Block Armor Trim",
+  "trim_pattern.earth-and-water.guard": "Guard Armor Trim",
+  "trim_pattern.earth-and-water.prismarine": "Guard Armor Trim",
+  "trim_pattern.earth-and-water.dripstone": "Block Armor Trim",
+  "trim_material.earth-and-water.steel": "Steel Material",
+
+  "entity.earth-and-water.earth_charge": "Earth Charge",
+  "entity.earth-and-water.water_charge": "Water Charge"
 }

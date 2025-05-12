@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "earth-and-water:block/mixed_prismarine_tiles",
+    "east": "earth-and-water:block/mixed_prismarine_tiles",
+    "north": "earth-and-water:block/mixed_prismarine_tiles_side",
+    "particle": "earth-and-water:block/mixed_prismarine_tiles",
+    "south": "earth-and-water:block/mixed_prismarine_tiles_side",
+    "up": "earth-and-water:block/mixed_prismarine_tiles",
+    "west": "earth-and-water:block/mixed_prismarine_tiles"
+  }
+}

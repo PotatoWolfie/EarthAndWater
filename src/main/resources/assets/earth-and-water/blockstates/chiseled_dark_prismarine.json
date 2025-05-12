@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "y_level=0": {
+      "model": "earth-and-water:block/chiseled_dark_prismarine_0"
+    },
+    "y_level=1": {
+      "model": "earth-and-water:block/chiseled_dark_prismarine_1"
+    },
+    "y_level=2": {
+      "model": "earth-and-water:block/chiseled_dark_prismarine_2"
+    },
+    "y_level=3": {
+      "model": "earth-and-water:block/chiseled_dark_prismarine_3"
+    }
+  }
+}

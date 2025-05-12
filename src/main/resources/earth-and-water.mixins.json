@@ -3,7 +3,9 @@
 	"package": "potatowolfie.earth_and_water.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ShieldBlockingMixin",
+		"LivingEntityMixin"
+
 	],
 	"injectors": {
 		"defaultRequire": 1

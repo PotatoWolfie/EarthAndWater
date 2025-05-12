@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "earth-and-water:block/chiseled_prismarine_bricks"
+    },
+    "active=true": {
+      "model": "earth-and-water:block/chiseled_prismarine_bricks_active"
+    }
+  }
+}

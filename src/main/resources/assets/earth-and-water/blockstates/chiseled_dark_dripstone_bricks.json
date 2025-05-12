@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "earth-and-water:block/chiseled_dark_dripstone_bricks"
+    },
+    "powered=true": {
+      "model": "earth-and-water:block/chiseled_dark_dripstone_bricks_on"
+    }
+  }
+}

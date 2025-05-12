@@ -1,0 +1,70 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "held_bore_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "earth_and_water:bore_rod"
+          }
+        ]
+      }
+    },
+    "held_brine_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "earth_and_water:brine_rod"
+          }
+        ]
+      }
+    },
+    "held_breeze_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:breeze_rod"
+          }
+        ]
+      }
+    },
+    "held_blaze_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:blaze_rod"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "held_bore_rod"
+    ],
+    [
+      "held_brine_rod"
+    ],
+    [
+      "held_breeze_rod"
+    ],
+    [
+      "held_blaze_rod"
+    ]
+  ],
+  "display": {
+    "icon": {
+      "id": "earth_and_water:bore_rod"
+    },
+    "title": "Long Ago...",
+    "description": "Collect All Four Elemental Rods",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

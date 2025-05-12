@@ -30,7 +30,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         ModBlocks.DRIPSTONE_BRICK_WALL,
                         ModBlocks.DIORITE_BRICK_WALL,
                         ModBlocks.GRANITE_BRICK_WALL,
-                        ModBlocks.PRISMARINE_TILE_WALL
+                        ModBlocks.PRISMARINE_TILE_WALL,
+                        ModBlocks.DARK_DRIPSTONE_WALL,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_WALL,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_WALL
                 );
     }
 }

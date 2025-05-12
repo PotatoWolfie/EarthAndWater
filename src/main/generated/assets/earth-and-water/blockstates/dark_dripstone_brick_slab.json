@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "earth-and-water:block/dark_dripstone_brick_slab"
+    },
+    "type=double": {
+      "model": "earth-and-water:block/dark_dripstone_bricks"
+    },
+    "type=top": {
+      "model": "earth-and-water:block/dark_dripstone_brick_slab_top"
+    }
+  }
+}

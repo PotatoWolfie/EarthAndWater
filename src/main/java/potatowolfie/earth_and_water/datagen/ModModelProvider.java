@@ -2,7 +2,6 @@ package potatowolfie.earth_and_water.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -25,6 +24,21 @@ public class ModModelProvider extends FabricModelProvider {
         dripstonebricksTexturePool.slab(ModBlocks.DRIPSTONE_BRICK_SLAB);
         dripstonebricksTexturePool.wall(ModBlocks.DRIPSTONE_BRICK_WALL);
 
+        BlockStateModelGenerator.BlockTexturePool darkdripstoneTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DARK_DRIPSTONE_BLOCK);
+        darkdripstoneTexturePool.stairs(ModBlocks.DARK_DRIPSTONE_STAIRS);
+        darkdripstoneTexturePool.slab(ModBlocks.DARK_DRIPSTONE_SLAB);
+        darkdripstoneTexturePool.wall(ModBlocks.DARK_DRIPSTONE_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool polisheddarkdripstoneTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.POLISHED_DARK_DRIPSTONE);
+        polisheddarkdripstoneTexturePool.stairs(ModBlocks.POLISHED_DARK_DRIPSTONE_STAIRS);
+        polisheddarkdripstoneTexturePool.slab(ModBlocks.POLISHED_DARK_DRIPSTONE_SLAB);
+        polisheddarkdripstoneTexturePool.wall(ModBlocks.POLISHED_DARK_DRIPSTONE_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool darkdripstonebricksTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DARK_DRIPSTONE_BRICKS);
+        darkdripstonebricksTexturePool.stairs(ModBlocks.DARK_DRIPSTONE_BRICK_STAIRS);
+        darkdripstonebricksTexturePool.slab(ModBlocks.DARK_DRIPSTONE_BRICK_SLAB);
+        darkdripstonebricksTexturePool.wall(ModBlocks.DARK_DRIPSTONE_BRICK_WALL);
+
         BlockStateModelGenerator.BlockTexturePool dripstoneTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.DRIPSTONE_BLOCK);
         dripstoneTexturePool.stairs(ModBlocks.DRIPSTONE_STAIRS);
         dripstoneTexturePool.slab(ModBlocks.DRIPSTONE_SLAB);
@@ -42,7 +56,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STEEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OXYGEN_BLOCK);
 
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+        blockStateModelGenerator.registerGeneric(ModBlocks.MIXED_PRISMARINE_TILES);
 
         BlockStateModelGenerator.BlockTexturePool dioritebricksTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DIORITE_BRICKS);
         dioritebricksTexturePool.stairs(ModBlocks.DIORITE_BRICK_STAIRS);
@@ -60,6 +74,7 @@ public class ModModelProvider extends FabricModelProvider {
         prismarinetilesTexturePool.wall(ModBlocks.PRISMARINE_TILE_WALL);
 
         blockStateModelGenerator.registerAxisRotated(ModBlocks.DRIPSTONE_PILLAR, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.DARK_DRIPSTONE_PILLAR, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.DARK_PRISMARINE_PILLAR, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.PRISMARINE_PILLAR, TexturedModel.END_FOR_TOP_CUBE_COLUMN, TexturedModel.END_FOR_TOP_CUBE_COLUMN_HORIZONTAL);
     }
@@ -69,10 +84,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BORE_ROD, Models.GENERATED);
         itemModelGenerator.register(ModItems.BRINE_ROD, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL_INGOT, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SPIKED_SHIELD_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPIKED_SHIELD_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.REINFORCED_KEY, Models.GENERATED);
-        itemModelGenerator.register(ModItems.WHIP, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SPEAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WHIP, Models.HANDHELD_ROD);
+        itemModelGenerator.register(ModItems.BATTLE_AXE, Models.HANDHELD);
 
     }
 }

@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "id": "earth-and-water:spiked_shield"
+    },
+    "title": "Not Today Either, Goodbye",
+    "description": "Deflect a projectile with a Spiked Shield",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/deflect_arrow",
+  "criteria": {
+    "blocked_projectile_with_spiked_shield_mainhand": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": true,
+          "type": {
+            "is_projectile": true
+          }
+        },
+        "equipment": {
+          "mainhand": {
+            "items": ["earth-and-water:spiked_shield"]
+          }
+        }
+      }
+    },
+    "blocked_projectile_with_spiked_shield_offhand": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": true,
+          "type": {
+            "is_projectile": true
+          }
+        },
+        "equipment": {
+          "offhand": {
+            "items": ["earth-and-water:spiked_shield"]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["blocked_projectile_with_spiked_shield_mainhand", "blocked_projectile_with_spiked_shield_offhand"]
+  ]
+}

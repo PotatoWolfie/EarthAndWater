@@ -3,12 +3,17 @@ package potatowolfie.earth_and_water.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.recipe.ShieldDecorationRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
+import potatowolfie.earth_and_water.EarthWater;
 import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.item.ModItems;
+import potatowolfie.earth_and_water.recipe.SpikedShieldDecorationRecipe;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -40,6 +45,8 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ANDESITE_BRICK_SLAB, ModBlocks.ANDESITE_BRICKS);
         offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ANDESITE_BRICK_WALL, ModBlocks.ANDESITE_BRICKS);
 
+        ComplexRecipeJsonBuilder.create(SpikedShieldDecorationRecipe::new).offerTo(exporter, "shield_decoration");
+
         offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DIORITE_BRICKS, Blocks.POLISHED_DIORITE);
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DIORITE_BRICK_SLAB, ModBlocks.DIORITE_BRICKS);
         offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DIORITE_BRICK_WALL, ModBlocks.DIORITE_BRICKS);
@@ -51,5 +58,8 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_TILES, Blocks.PRISMARINE_BRICKS);
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_TILE_SLAB, ModBlocks.GRANITE_BRICKS);
         offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_TILE_WALL, ModBlocks.GRANITE_BRICKS);
+
+        offerSmithingTrimRecipe(exporter, ModItems.BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE, Identifier.of(EarthWater.MOD_ID, "block"));
+        offerSmithingTrimRecipe(exporter, ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE, Identifier.of(EarthWater.MOD_ID, "guard"));
     }
 }

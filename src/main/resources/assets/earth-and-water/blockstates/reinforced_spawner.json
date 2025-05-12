@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "earth-and-water:block/reinforced_spawner"
+      "model": "earth-and-water:block/reinforced_spawner_off"
     }
   }
 }

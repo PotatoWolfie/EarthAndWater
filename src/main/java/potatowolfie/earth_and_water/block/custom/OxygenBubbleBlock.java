@@ -87,7 +87,6 @@ public class OxygenBubbleBlock extends Block implements Waterloggable {
             return;
         }
 
-        // Check if the oxygen block below still exists (up to 3 blocks down)
         boolean hasOxygenBelow = false;
         for (int y = 1; y <= 3; y++) {
             BlockPos checkPos = pos.down(y);
