@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "earth-and-water:block/reinforced_spawner_bottom",
+    "east": "earth-and-water:block/reinforced_spawner_side_off",
+    "north": "earth-and-water:block/reinforced_spawner_side_off",
+    "particle": "earth-and-water:block/reinforced_spawner_side_off",
+    "south": "earth-and-water:block/reinforced_spawner_side_off",
+    "up": "earth-and-water:block/reinforced_spawner_top",
+    "west": "earth-and-water:block/reinforced_spawner_side_off"
+  }
+}

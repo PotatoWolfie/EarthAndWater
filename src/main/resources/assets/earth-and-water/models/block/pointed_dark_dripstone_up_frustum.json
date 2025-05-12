@@ -1,0 +1,6 @@
+{
+  "parent": "earth-and-water:block/dark_pointed_dripstone",
+  "textures": {
+    "cross": "earth-and-water:block/pointed_dark_dripstone_up_frustum"
+  }
+}
