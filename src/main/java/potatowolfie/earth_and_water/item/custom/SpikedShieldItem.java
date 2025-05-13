@@ -37,11 +37,6 @@ public class SpikedShieldItem extends ShieldItem implements Equipment {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        BannerItem.appendBannerTooltip(stack, tooltip);
-    }
-
-    @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BLOCK;
     }
@@ -66,5 +61,24 @@ public class SpikedShieldItem extends ShieldItem implements Equipment {
     @Override
     public EquipmentSlot getSlotType() {
         return EquipmentSlot.OFFHAND;
+    }
+
+    public static ItemStack applyBannerPattern(ItemStack shield, ItemStack banner) {
+        if (shield.isEmpty() || banner.isEmpty() || !(shield.getItem() instanceof SpikedShieldItem)) {
+            return shield;
+        }
+
+        BannerPatternsComponent bannerPatterns = banner.get(DataComponentTypes.BANNER_PATTERNS);
+        DyeColor baseColor = banner.get(DataComponentTypes.BASE_COLOR);
+
+        if (bannerPatterns != null) {
+            shield.set(DataComponentTypes.BANNER_PATTERNS, bannerPatterns);
+        }
+
+        if (baseColor != null) {
+            shield.set(DataComponentTypes.BASE_COLOR, baseColor);
+        }
+
+        return shield;
     }
 }

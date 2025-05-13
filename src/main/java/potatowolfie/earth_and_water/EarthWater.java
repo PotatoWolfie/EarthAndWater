@@ -3,7 +3,6 @@ package potatowolfie.earth_and_water;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
@@ -28,7 +27,6 @@ public class EarthWater implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final SimpleParticleType LIGHT_UP = FabricParticleTypes.simple();
 	public static final SimpleParticleType SHOCK_WAVE = FabricParticleTypes.simple();
-
 
 	@Override
 	public void onInitialize() {

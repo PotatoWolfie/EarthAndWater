@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "earth-and-water:steel_ingot"
+    },
+    "X": {
+      "item": "earth-and-water:bore_rod"
+    }
+  },
+  "pattern": [
+    "# #",
+    "#X#",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "earth-and-water:battle_axe"
+  }
+}

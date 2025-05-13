@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-08T20:14:47.1651668	Earth & Water/Model Definitions
+// 1.21.1	2025-05-11T22:41:40.0216662	Earth & Water/Model Definitions
 111ff7cd20167c986b74570cb8aaa14b326e4aa7 assets\earth-and-water\models\block\prismarine_pillar_horizontal.json
 266fec7194676e9735040428752c0c8de5deccd5 assets\earth-and-water\models\item\polished_dark_dripstone_stairs.json
 0e73c50c34e463d3a3d4c135aee226052d2b9ba1 assets\earth-and-water\models\block\granite_brick_stairs_inner.json
@@ -19,8 +19,8 @@ a8a2eb78484779b8b8a3bc54ef09ae7525df0588 assets\earth-and-water\models\item\dior
 cbc71a86eae08a9a57309ddd6b8dbaa7abfb988b assets\earth-and-water\models\block\diorite_brick_wall_side.json
 755588575d543401802f7d98896867263ba2b49d assets\earth-and-water\models\item\dark_dripstone_brick_wall.json
 805dabacf9e2d8613e04c2eec44dba9200799c86 assets\earth-and-water\models\block\dripstone_brick_stairs_inner.json
-7cbfe16a1c573414dde9a44d4275fa459f9cc68f assets\earth-and-water\models\item\spiked_shield_upgrade_smithing_template.json
 ec4c4fb0c6637746e6489a1828df6cf08af80b8a assets\earth-and-water\blockstates\andesite_bricks.json
+7cbfe16a1c573414dde9a44d4275fa459f9cc68f assets\earth-and-water\models\item\spiked_shield_upgrade_smithing_template.json
 6470a8c0a4981b12e813baa1c0243d4cbc6b39c4 assets\earth-and-water\models\block\polished_dark_dripstone_stairs.json
 4d6a36a2943b8e85e584399d109182d9a6fc2189 assets\earth-and-water\models\item\dark_dripstone_bricks.json
 4983d89d348bd3080b3740e922107dacf56725b0 assets\earth-and-water\models\item\dripstone_bricks.json
@@ -97,8 +97,8 @@ b5f355fe8bc536fc7390a048adf3319957db6db6 assets\earth-and-water\models\item\drip
 0c2d9316b0815a4ddb591ab56a71bd11c1e4dcc9 assets\earth-and-water\models\block\dripstone_wall_post.json
 60350cfa6d620ca43c7cb358f7a21343560bd255 assets\earth-and-water\models\block\dripstone_brick_stairs.json
 c6b83aea797fc8034c57eff02b9b440b5beade26 assets\earth-and-water\models\block\granite_brick_stairs_outer.json
-cd90a42dd7e842707829665c8a08e9234b7dd3c2 assets\earth-and-water\models\item\prismarine_tile_slab.json
 df8cc3922e84711e436f025e958086247bc05304 assets\earth-and-water\blockstates\dripstone_wall.json
+cd90a42dd7e842707829665c8a08e9234b7dd3c2 assets\earth-and-water\models\item\prismarine_tile_slab.json
 9b747fe70765f1214f9ab0581b83ef474988c190 assets\earth-and-water\blockstates\polished_dripstone_stairs.json
 6701c497393f9436d1883246b9ae119555d57b4c assets\earth-and-water\blockstates\steel_block.json
 830ef22752261f064c5845cf27a05a53cab61e90 assets\earth-and-water\blockstates\dripstone_brick_slab.json

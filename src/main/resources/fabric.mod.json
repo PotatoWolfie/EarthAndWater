@@ -39,7 +39,6 @@
 	"custom": {
 		"modmenu": {
 			"links": {
-				"modmenu.discord": "https://discord.gg/yourdiscordlink",
 				"modmenu.modrinth": "https://modrinth.com/mod/earth-and-water",
 				"modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/earth-and-water",
 				"Planet Minecraft": "https://www.planetminecraft.com/mod/earth-and-water"

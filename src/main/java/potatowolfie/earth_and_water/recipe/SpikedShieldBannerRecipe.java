@@ -12,8 +12,8 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import potatowolfie.earth_and_water.item.ModItems;
 
-public class SpikedShieldDecorationRecipe extends SpecialCraftingRecipe {
-    public SpikedShieldDecorationRecipe(CraftingRecipeCategory craftingRecipeCategory) {
+public class SpikedShieldBannerRecipe extends SpecialCraftingRecipe {
+    public SpikedShieldBannerRecipe(CraftingRecipeCategory craftingRecipeCategory) {
         super(craftingRecipeCategory);
     }
 
@@ -83,6 +83,6 @@ public class SpikedShieldDecorationRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.SHIELD_DECORATION;
+        return ModRecipes.SPIKED_SHIELD_BANNER;
     }
 }

@@ -8,12 +8,13 @@ import net.minecraft.util.Identifier;
 import potatowolfie.earth_and_water.EarthWater;
 
 public class ModRecipes {
-    public static final RecipeSerializer<SpikedShieldDecorationRecipe> SPIKED_SHIELD_DECORATION = 
-            Registry.register(Registries.RECIPE_SERIALIZER, 
-                    Identifier.of(EarthWater.MOD_ID, "crafting_special_spikedshielddecoration"),
-                    new SpecialRecipeSerializer<>(SpikedShieldDecorationRecipe::new));
+
+    public static final RecipeSerializer<SpikedShieldBannerRecipe> SPIKED_SHIELD_BANNER =
+            new SpecialRecipeSerializer<>(SpikedShieldBannerRecipe::new);
 
     public static void registerRecipes() {
-        EarthWater.LOGGER.info("Registering recipes for " + EarthWater.MOD_ID);
+        Registry.register(Registries.RECIPE_SERIALIZER,
+                Identifier.of(EarthWater.MOD_ID, "crafting_special_spiked_shield_banner"),
+                SPIKED_SHIELD_BANNER);
     }
 }

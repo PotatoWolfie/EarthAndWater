@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-08T20:14:47.190099	Earth & Water/Recipes
+// 1.21.1	2025-05-11T22:41:40.0256242	Earth & Water/Recipes
 9fd5e96f0d2ea3172631cfc9f6a8c5178c0bdb95 data\earth-and-water\recipe\block.json
 9f98509c5ce343ab263a40dcc3985f388b68490a data\earth-and-water\advancement\recipes\building_blocks\andesite_bricks.json
 c1f5f42699c20a8227ab39d13e36a936b9c3a25f data\earth-and-water\recipe\dripstone_wall.json
@@ -23,7 +23,7 @@ fd01a71077675d2f4354e814b2e7a590e564fffc data\earth-and-water\advancement\recipe
 5f83a521356a4e871859bf29953b842a53bea266 data\earth-and-water\advancement\recipes\building_blocks\chiseled_dripstone_bricks.json
 ad4f4fd5e9dcfc7a7d23ac0c1cb1f5c14d09640f data\earth-and-water\recipe\andesite_brick_slab.json
 9cad64e113f11505efd7dcf9a5d5447ecc91e264 data\earth-and-water\advancement\recipes\building_blocks\steel_ingot.json
-7610b9dc4d4cb0f4b816eb91f769fa7440fe3d2f data\earth-and-water\recipe\shield_decoration.json
+1cf3a88ba5ce3ed956e25e25ecfe5202956acfe7 data\earth-and-water\recipe\shield_decoration.json
 3647c55c5cc3de07c35bc596427baa84cd962047 data\earth-and-water\recipe\granite_brick_slab.json
 48181fcb4780ddc18c4dc691370220e8797d9239 data\earth-and-water\advancement\recipes\building_blocks\prismarine_tiles.json
 d28e6dce046cb3f1d453f32cb0adc72ad571387e data\earth-and-water\recipe\dripstone_bricks.json

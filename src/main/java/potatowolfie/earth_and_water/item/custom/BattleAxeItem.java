@@ -24,6 +24,7 @@ public class BattleAxeItem extends AxeItem {
     private static final float MIDAIR_Y_DASH_STRENGTH = 0.76f;
     private static final int DASH_DISTANCE = 4;
     private static final float DASH_DAMAGE = 5.0f;
+    private static final int SHIELD_DISABLE_DURATION = 100;
 
     public BattleAxeItem(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
@@ -35,6 +36,42 @@ public class BattleAxeItem extends AxeItem {
         tooltip.add(Text.translatable("tooltip.earth-and-water.battle_axe.tooltip1"));
         tooltip.add(Text.translatable("tooltip.earth-and-water.battle_axe.tooltip2"));
         super.appendTooltip(stack, context, tooltip, type);
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (target.isBlocking()) {
+            boolean isCriticalHit = false;
+
+            if (attacker instanceof PlayerEntity playerAttacker) {
+                isCriticalHit = playerAttacker.getVelocity().y < 0
+                        && !playerAttacker.isOnGround()
+                        && !playerAttacker.hasStatusEffect(net.minecraft.entity.effect.StatusEffects.BLINDNESS)
+                        && !playerAttacker.isTouchingWater()
+                        && !playerAttacker.getAbilities().flying;
+            }
+
+            if (isCriticalHit) {
+                target.getWorld().playSound(null,
+                        target.getX(), target.getY(), target.getZ(),
+                        SoundEvents.ITEM_SHIELD_BREAK,
+                        SoundCategory.PLAYERS,
+                        0.8F,
+                        0.8F + target.getWorld().getRandom().nextFloat() * 0.4F);
+
+                if (target instanceof PlayerEntity playerTarget) {
+                    ItemStack shieldStack = playerTarget.getActiveItem();
+                    if (shieldStack.getItem() instanceof ShieldItem || shieldStack.getItem() instanceof SpikedShieldItem) {
+                        playerTarget.getItemCooldownManager().set(shieldStack.getItem(), SHIELD_DISABLE_DURATION);
+                        playerTarget.clearActiveItem();
+
+                        playerTarget.getWorld().sendEntityStatus(playerTarget, (byte)30);
+                    }
+                }
+            }
+        }
+
+        return super.postHit(stack, target, attacker);
     }
 
     @Override
