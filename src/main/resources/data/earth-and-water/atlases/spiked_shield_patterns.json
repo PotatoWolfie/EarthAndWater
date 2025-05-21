@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "earth-and-water:textures/entity"
+    }
+  ]
+}

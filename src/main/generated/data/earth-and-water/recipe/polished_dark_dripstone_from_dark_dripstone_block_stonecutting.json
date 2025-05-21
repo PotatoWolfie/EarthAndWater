@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "earth-and-water:dark_dripstone_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "earth-and-water:polished_dark_dripstone"
+  }
+}

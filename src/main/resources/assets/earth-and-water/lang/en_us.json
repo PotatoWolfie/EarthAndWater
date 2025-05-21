@@ -1,6 +1,7 @@
 {
   "item.earth-and-water.brine_rod": "Brine Rod",
   "item.earth-and-water.bore_rod": "Bore Rod",
+  "item.earth-and-water.bore_spawn_egg": "Bore Spawn Egg",
   "item.earth-and-water.steel_ingot": "Steel Ingot",
   "item.earth-and-water.reinforced_key": "Reinforced Key",
   "tooltip.earth-and-water.reinforced_key": "Used to activate or deactivate Reinforced Spawners. Has 2 uses.",
@@ -40,11 +41,6 @@
   "painting.earth-and-water.ruins.title": "Ruins",
   "painting.earth-and-water.ruins.author": "Demidiant",
 
-  "block.earth-and-water.andesite_bricks": "Andesite Bricks",
-  "block.earth-and-water.andesite_brick_stairs": "Andesite Brick Stairs",
-  "block.earth-and-water.andesite_brick_slab": "Andesite Brick Slab",
-  "block.earth-and-water.andesite_brick_wall": "Andesite Brick Wall",
-
   "block.earth-and-water.dark_prismarine_pillar": "Dark Prismarine Pillar",
   "block.earth-and-water.prismarine_pillar": "Prismarine Pillar",
   "block.earth-and-water.chiseled_prismarine_bricks": "Chiseled Prismarine Bricks",
@@ -52,17 +48,6 @@
   "block.earth-and-water.prismarine_tile_stairs": "Prismarine Tile Stairs",
   "block.earth-and-water.prismarine_tile_slab": "Prismarine Tile Slab",
   "block.earth-and-water.prismarine_tile_wall": "Prismarine Tile Wall",
-
-  "block.earth-and-water.diorite_bricks": "Diorite Bricks",
-  "block.earth-and-water.diorite_brick_stairs": "Diorite Brick Stairs",
-  "block.earth-and-water.diorite_brick_slab": "Diorite Brick Slab",
-  "block.earth-and-water.diorite_brick_wall": "Diorite Brick Wall",
-
-
-  "block.earth-and-water.granite_bricks": "Granite Bricks",
-  "block.earth-and-water.granite_brick_stairs": "Granite Brick Stairs",
-  "block.earth-and-water.granite_brick_slab": "Granite Brick Slab",
-  "block.earth-and-water.granite_brick_wall": "Granite Brick Wall",
 
   "block.earth-and-water.pointed_dark_dripstone": "Pointed Dark Dripstone",
 
@@ -96,6 +81,7 @@
   "block.earth-and-water.polished_dripstone_stairs": "Polished Dripstone Stairs",
   "block.earth-and-water.polished_dripstone_slab": "Polished Dripstone Slab",
   "block.earth-and-water.polished_dripstone_wall": "Polished Dripstone Wall",
+  "block.earth-and-water.polished_dripstone_tiles": "Polished Dripstone Tiles",
 
   "block.earth-and-water.dripstone_stairs": "Dripstone Stairs",
   "block.earth-and-water.dripstone_slab": "Dripstone Slab",
@@ -108,8 +94,12 @@
   "tag.item.earth-and-water.incorrect_for_steel_tool": "Incorrect for Steel Tool",
   "tag.item.earth-and-water.needs_prismarine_tool": "Needs Prismarine Tool",
   "tag.item.earth-and-water.needs_steel_tool": "Needs Steel Tool",
-  "tag.item.earth-and-water.battle_axe_enchantable": "Battle Axe Enchantable",
   "tag.item.earth-and-water.is_reinforced_spawner": "Is Reinforced Spawner",
+  "tag.item.earth-and-water.e_w_conduit_frame_blocks": "E&W Conduit Frame Block",
+  "tag.item.earth-and-water.is_ancient_ruins": "Is Ancient Ruins",
+  "tag.item.earth-and-water.battle_axe_enchantable": "Battle Axe Enchantable",
+  "tag.item.earth-and-water.spiked_shield": "Spiked Shield",
+  "tag.item.earth-and-water.spiked_shield_disabling": "Disables Spiked Shields",
 
   "tooltip.earth-and-water.whip.tooltip1": "§7When Attacking Underwater:",
   "tooltip.earth-and-water.whip.tooltip2": " §2Stuns Opponent",
@@ -134,5 +124,6 @@
   "trim_material.earth-and-water.steel": "Steel Material",
 
   "entity.earth-and-water.earth_charge": "Earth Charge",
-  "entity.earth-and-water.water_charge": "Water Charge"
+  "entity.earth-and-water.water_charge": "Water Charge",
+  "entity.earth-and-water.bore": "Bore"
 }

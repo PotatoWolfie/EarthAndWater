@@ -1,7 +1,6 @@
 package potatowolfie.earth_and_water.item.custom;
 
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.render.entity.model.ShieldEntityModel;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.entity.EquipmentSlot;
@@ -9,9 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
@@ -21,12 +18,13 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class SpikedShieldItem extends ShieldItem implements Equipment {
+public class SpikedShieldItem extends ShieldItem {
+
+    public static final int field_30918 = 5;
     public static final float MIN_DAMAGE_AMOUNT_TO_BREAK = 3.0F;
-    private static final int BASE_DURABILITY = 336;
 
     public SpikedShieldItem(Item.Settings settings) {
-        super(settings.maxDamage(BASE_DURABILITY).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT));
+        super(settings);
         DispenserBlock.registerBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
     }
 
@@ -34,6 +32,11 @@ public class SpikedShieldItem extends ShieldItem implements Equipment {
     public String getTranslationKey(ItemStack stack) {
         DyeColor dyeColor = stack.get(DataComponentTypes.BASE_COLOR);
         return dyeColor != null ? this.getTranslationKey() + "." + dyeColor.getName() : super.getTranslationKey(stack);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        BannerItem.appendBannerTooltip(stack, tooltip);
     }
 
     @Override
@@ -61,24 +64,5 @@ public class SpikedShieldItem extends ShieldItem implements Equipment {
     @Override
     public EquipmentSlot getSlotType() {
         return EquipmentSlot.OFFHAND;
-    }
-
-    public static ItemStack applyBannerPattern(ItemStack shield, ItemStack banner) {
-        if (shield.isEmpty() || banner.isEmpty() || !(shield.getItem() instanceof SpikedShieldItem)) {
-            return shield;
-        }
-
-        BannerPatternsComponent bannerPatterns = banner.get(DataComponentTypes.BANNER_PATTERNS);
-        DyeColor baseColor = banner.get(DataComponentTypes.BASE_COLOR);
-
-        if (bannerPatterns != null) {
-            shield.set(DataComponentTypes.BANNER_PATTERNS, bannerPatterns);
-        }
-
-        if (baseColor != null) {
-            shield.set(DataComponentTypes.BASE_COLOR, baseColor);
-        }
-
-        return shield;
     }
 }

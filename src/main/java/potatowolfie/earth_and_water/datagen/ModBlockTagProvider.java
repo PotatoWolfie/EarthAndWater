@@ -16,24 +16,78 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.STEEL_BLOCK,
+                .add(
+                        ModBlocks.DRIPSTONE_STAIRS,
+                        ModBlocks.DRIPSTONE_SLAB,
+                        ModBlocks.DRIPSTONE_WALL,
+                        ModBlocks.DRIPSTONE_BRICKS,
+                        ModBlocks.DRIPSTONE_BRICK_STAIRS,
+                        ModBlocks.DRIPSTONE_BRICK_SLAB,
+                        ModBlocks.DRIPSTONE_BRICK_WALL,
                         ModBlocks.POLISHED_DRIPSTONE,
                         ModBlocks.POLISHED_DRIPSTONE_STAIRS,
                         ModBlocks.POLISHED_DRIPSTONE_SLAB,
-                        ModBlocks.DRIPSTONE_PILLAR
+                        ModBlocks.POLISHED_DRIPSTONE_WALL,
+                        ModBlocks.POLISHED_DRIPSTONE_TILES,
+                        ModBlocks.DRIPSTONE_PILLAR,
+                        ModBlocks.CHISELED_DRIPSTONE_BRICKS,
+                        ModBlocks.DARK_DRIPSTONE_BLOCK,
+                        ModBlocks.DARK_DRIPSTONE_STAIRS,
+                        ModBlocks.DARK_DRIPSTONE_SLAB,
+                        ModBlocks.DARK_DRIPSTONE_WALL,
+                        ModBlocks.DARK_DRIPSTONE_BRICKS,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_STAIRS,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_SLAB,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_WALL,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_STAIRS,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_SLAB,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_WALL,
+                        ModBlocks.DARK_DRIPSTONE_PILLAR,
+                        ModBlocks.POINTED_DARK_DRIPSTONE,
+                        ModBlocks.DARK_PRISMARINE_PILLAR,
+                        ModBlocks.CHISELED_PRISMARINE_BRICKS,
+                        ModBlocks.PRISMARINE_PILLAR,
+                        ModBlocks.PRISMARINE_TILES,
+                        ModBlocks.PRISMARINE_TILE_STAIRS,
+                        ModBlocks.PRISMARINE_TILE_SLAB,
+                        ModBlocks.PRISMARINE_TILE_WALL,
+                        ModBlocks.MIXED_PRISMARINE_TILES,
+                        ModBlocks.CHISELED_DARK_PRISMARINE,
+                        ModBlocks.OXYGEN_BLOCK
                 );
 
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.POLISHED_DRIPSTONE_WALL,
                         ModBlocks.DRIPSTONE_WALL,
-                        ModBlocks.ANDESITE_BRICK_WALL,
-                        ModBlocks.DRIPSTONE_BRICK_WALL,
-                        ModBlocks.DIORITE_BRICK_WALL,
-                        ModBlocks.GRANITE_BRICK_WALL,
                         ModBlocks.PRISMARINE_TILE_WALL,
                         ModBlocks.DARK_DRIPSTONE_WALL,
                         ModBlocks.POLISHED_DARK_DRIPSTONE_WALL,
                         ModBlocks.DARK_DRIPSTONE_BRICK_WALL
+                );
+
+        getOrCreateTagBuilder(BlockTags.SLABS)
+                .add(ModBlocks.DRIPSTONE_SLAB,
+                        ModBlocks.DRIPSTONE_BRICK_SLAB,
+                        ModBlocks.POLISHED_DRIPSTONE_SLAB,
+                        ModBlocks.DARK_DRIPSTONE_SLAB,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_SLAB,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_SLAB,
+                        ModBlocks.PRISMARINE_TILE_SLAB
+                );
+
+        getOrCreateTagBuilder(BlockTags.STAIRS)
+                .add(ModBlocks.DRIPSTONE_STAIRS,
+                        ModBlocks.DRIPSTONE_BRICK_STAIRS,
+                        ModBlocks.POLISHED_DRIPSTONE_STAIRS,
+                        ModBlocks.DARK_DRIPSTONE_STAIRS,
+                        ModBlocks.DARK_DRIPSTONE_BRICK_STAIRS,
+                        ModBlocks.POLISHED_DARK_DRIPSTONE_STAIRS,
+                        ModBlocks.PRISMARINE_TILE_STAIRS
+                );
+
+        getOrCreateTagBuilder(BlockTags.REPLACEABLE)
+                .add(ModBlocks.OXYGEN_BUBBLE
                 );
     }
 }

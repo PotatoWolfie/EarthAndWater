@@ -10,6 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -21,9 +22,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import potatowolfie.earth_and_water.EarthWater;
-import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.effect.ModEffects;
 import potatowolfie.earth_and_water.entity.ModEntities;
 import potatowolfie.earth_and_water.item.ModItems;
@@ -32,33 +31,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import potatowolfie.earth_and_water.util.ExplosionUtil;
 
 public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
-    public Vector2f groundedOffset;
-
     boolean isStuck = false;
     private Entity attachedEntity = null;
     private BlockPos attachedBlock = null;
     private Direction attachedFace = null;
     private Vec3d exactHitPosition = null;
 
-    private boolean isPaused = false;
-    private boolean wasInSinglePlayer = false;
-    private Vec3d pausedVelocity = null;
-    private int disconnectTimer = 0;
-    private static final int MULTIPLAYER_DESPAWN_TIME = 200;
+    private int stuckTicks = -1;
+    private static final int TICKS_TO_EXPLODE = 40;
 
-    private Vec3d attachmentPosition = null;
-    private Vec3d attachmentOffset = null;
     private float initialEntityYaw = 0;
 
     private Vec3d initialDirection = null;
 
     private static final float DIRECT_DAMAGE = 4.5F;
     private static final float INDIRECT_KNOCKBACK_RADIUS = 5.0F;
-    private static final float DIRECT_OXYGEN_RADIUS = 3.0F;
     private static final float KNOCKBACK_STRENGTH = 0.5F;
     private static final int BUBBLE_EFFECT_DURATION = 60;
     private static final float WATER_BREATHING_DURATION = 2.5F;
@@ -70,7 +60,6 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
     private int bubbleEffectTimer = 0;
     private boolean isPerformingBubbleEffect = false;
     private boolean isDirectHit = false;
-    private final List<BlockPos> temporaryOxygenBlocks = new ArrayList<>();
 
     public WaterChargeProjectileEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
         super(entityType, world);
@@ -127,7 +116,6 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
         return inGround;
     }
 
-
     private boolean isReallyInWater() {
         BlockPos pos = this.getBlockPos();
         World world = this.getWorld();
@@ -164,51 +152,6 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
             );
         }
     }
-
-    private void spawnTemporaryOxygenBlocks(Vec3d center, float radius) {
-        if (getWorld().isClient()) return;
-
-        ServerWorld serverWorld = (ServerWorld) getWorld();
-        BlockPos centerPos = new BlockPos((int)center.x, (int)center.y, (int)center.z);
-
-        int radiusInt = (int)Math.ceil(radius);
-
-        clearTemporaryOxygenBlocks();
-
-        for (int x = -radiusInt; x <= radiusInt; x++) {
-            for (int y = -radiusInt; y <= radiusInt; y++) {
-                for (int z = -radiusInt; z <= radiusInt; z++) {
-                    double distance = Math.sqrt(x*x + y*y + z*z);
-                    if (distance <= radius) {
-                        BlockPos pos = centerPos.add(x, y, z);
-
-                        if (serverWorld.isWater(pos) && serverWorld.getBlockState(pos).isAir() ||
-                                serverWorld.getFluidState(pos).isOf(net.minecraft.fluid.Fluids.WATER)) {
-                            temporaryOxygenBlocks.add(pos);
-
-                            serverWorld.setBlockState(pos, ModBlocks.OXYGEN_BUBBLE.getDefaultState());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    private void clearTemporaryOxygenBlocks() {
-        if (getWorld().isClient() || temporaryOxygenBlocks.isEmpty()) return;
-
-        ServerWorld serverWorld = (ServerWorld) getWorld();
-
-        for (BlockPos pos : temporaryOxygenBlocks) {
-            if (serverWorld.getBlockState(pos).isOf(ModBlocks.OXYGEN_BUBBLE)) {
-                serverWorld.removeBlock(pos, false);
-            }
-        }
-
-        temporaryOxygenBlocks.clear();
-    }
-
 
     private void createWaterShockwave() {
         World world = this.getWorld();
@@ -526,22 +469,46 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
 
         this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
                 SoundEvents.BLOCK_GILDED_BLACKSTONE_BREAK, SoundCategory.BLOCKS, 1.0F, 1.2F);
-
-        Vec3d hitPos = entityHitResult.getPos();
-        exactHitPosition = hitPos;
     }
 
     @Override
     protected void onBlockHit(BlockHitResult result) {
-        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
-                SoundEvents.BLOCK_GILDED_BLACKSTONE_BREAK, SoundCategory.NEUTRAL, 1.0F, 1.2F);
+        super.onBlockHit(result);
+
         if (!isReallyInWater()) {
             spawnAsItem();
             return;
         }
 
-        exactHitPosition = result.getPos();
-        createWaterShockwave();
+        Vec3d hitPos = result.getPos();
+        Direction face = result.getSide();
+        double embedOffset = 0.05;
+
+        Vec3d embeddedPos = hitPos.add(
+                face.getOffsetX() * embedOffset,
+                face.getOffsetY() * embedOffset,
+                face.getOffsetZ() * embedOffset
+        );
+
+        this.setPos(embeddedPos.x, embeddedPos.y, embeddedPos.z);
+        this.setVelocity(Vec3d.ZERO);
+        this.setNoGravity(true);
+
+        this.setYaw(0.0F);
+        this.setPitch(0.0F);
+        this.setHeadYaw(0.0F);
+        this.prevYaw = this.getYaw();
+        this.prevPitch = this.getPitch();
+
+        this.exactHitPosition = embeddedPos;
+        this.attachedBlock = result.getBlockPos();
+        this.attachedFace = face;
+        this.isStuck = true;
+        this.stuckTicks = 0;
+
+        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
+                SoundEvents.BLOCK_GILDED_BLACKSTONE_BREAK,
+                SoundCategory.NEUTRAL, 1.0F, 1.2F);
     }
 
     public boolean canBeCollidedWith() {
@@ -565,6 +532,7 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
         }
     }
 
+
     @Override
     public void tick() {
         if (isPerformingBubbleEffect) {
@@ -575,6 +543,41 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
                 isPerformingBubbleEffect = false;
                 this.discard();
                 return;
+            }
+        }
+
+        if (isStuck && stuckTicks >= 0 && !isPerformingBubbleEffect) {
+            stuckTicks++;
+
+            if (stuckTicks > 20 && this.getWorld().isClient()) {
+                int particleChance = stuckTicks > 35 ? 1 : (stuckTicks > 30 ? 2 : 3);
+
+                if (this.random.nextInt(particleChance) == 0) {
+                    Vec3d pos = this.getPos();
+                    double spreadFactor = 0.1;
+
+                    this.getWorld().addParticle(
+                            ParticleTypes.BUBBLE,
+                            pos.x + (this.random.nextDouble() - 0.5) * spreadFactor,
+                            pos.y + (this.random.nextDouble() - 0.5) * spreadFactor,
+                            pos.z + (this.random.nextDouble() - 0.5) * spreadFactor,
+                            (this.random.nextDouble() - 0.5) * 0.03,
+                            0.1 + (this.random.nextDouble() * 0.05),
+                            (this.random.nextDouble() - 0.5) * 0.03
+                    );
+                }
+            }
+
+            if (stuckTicks >= 40) {
+                this.setInvisible(true);
+
+                createWaterShockwave();
+
+                if (!getWorld().isClient()) {
+                    this.discard();
+                }
+
+                stuckTicks = -1;
             }
         }
 
@@ -622,24 +625,70 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
         }
     }
 
-    private Vec3d getVec3d() {
-        Vec3d entityPos = attachedEntity.getPos();
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
 
-        float currentYaw = attachedEntity.getYaw() * 0.017453292F;
-        float initialYawRadians = initialEntityYaw * 0.017453292F;
-        float yawDifference = currentYaw - initialYawRadians;
+        isStuck = nbt.getBoolean("IsStuck");
+        stuckTicks = nbt.getInt("StuckTicks");
 
-        double offsetX = attachmentOffset.x;
-        double offsetY = attachmentOffset.y;
-        double offsetZ = attachmentOffset.z;
+        if (nbt.contains("AttachedBlockX") && nbt.contains("AttachedBlockY") && nbt.contains("AttachedBlockZ")) {
+            attachedBlock = new BlockPos(
+                    nbt.getInt("AttachedBlockX"),
+                    nbt.getInt("AttachedBlockY"),
+                    nbt.getInt("AttachedBlockZ")
+            );
+        }
 
-        double rotatedX = offsetX * Math.cos(yawDifference) + offsetZ * Math.sin(yawDifference);
-        double rotatedZ = offsetZ * Math.cos(yawDifference) - offsetX * Math.sin(yawDifference);
+        if (nbt.contains("AttachedFace")) {
+            attachedFace = Direction.byId(nbt.getInt("AttachedFace"));
+        }
 
-        Vec3d targetPos = entityPos.add(rotatedX, offsetY, rotatedZ);
-        Vec3d currentPos = new Vec3d(this.getX(), this.getY(), this.getZ());
-        Vec3d newPos = currentPos.lerp(targetPos, 0.6);
-        return newPos;
+        if (nbt.contains("HitPosX") && nbt.contains("HitPosY") && nbt.contains("HitPosZ")) {
+            exactHitPosition = new Vec3d(
+                    nbt.getDouble("HitPosX"),
+                    nbt.getDouble("HitPosY"),
+                    nbt.getDouble("HitPosZ")
+            );
+        }
+
+        if (nbt.contains("InitialDirX") && nbt.contains("InitialDirY") && nbt.contains("InitialDirZ")) {
+            initialDirection = new Vec3d(
+                    nbt.getDouble("InitialDirX"),
+                    nbt.getDouble("InitialDirY"),
+                    nbt.getDouble("InitialDirZ")
+            );
+        }
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+
+        nbt.putBoolean("IsStuck", isStuck);
+        nbt.putInt("StuckTicks", stuckTicks);
+
+        if (attachedBlock != null) {
+            nbt.putInt("AttachedBlockX", attachedBlock.getX());
+            nbt.putInt("AttachedBlockY", attachedBlock.getY());
+            nbt.putInt("AttachedBlockZ", attachedBlock.getZ());
+        }
+
+        if (attachedFace != null) {
+            nbt.putInt("AttachedFace", attachedFace.getId());
+        }
+
+        if (exactHitPosition != null) {
+            nbt.putDouble("HitPosX", exactHitPosition.x);
+            nbt.putDouble("HitPosY", exactHitPosition.y);
+            nbt.putDouble("HitPosZ", exactHitPosition.z);
+        }
+
+        if (initialDirection != null) {
+            nbt.putDouble("InitialDirX", initialDirection.x);
+            nbt.putDouble("InitialDirY", initialDirection.y);
+            nbt.putDouble("InitialDirZ", initialDirection.z);
+        }
     }
 
     private void spawnAsItem() {
@@ -676,12 +725,6 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
     @Override
     public double getDamage() {
         return 0.0;
-    }
-
-    @Override
-    public void remove(Entity.RemovalReason reason) {
-        clearTemporaryOxygenBlocks();
-        super.remove(reason);
     }
 
     public static void registerDispenserBehavior() {
@@ -733,9 +776,7 @@ public class WaterChargeProjectileEntity extends PersistentProjectileEntity {
         super.kill();
     }
 
-    @Override
-    public void onRemoved() {
-        clearTemporaryOxygenBlocks();
-        super.onRemoved();
+    public boolean isStuckToEntity() {
+        return isStuck && attachedEntity != null;
     }
 }

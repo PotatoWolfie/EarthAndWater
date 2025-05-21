@@ -94,6 +94,16 @@ public class ChiseledDarkDripstoneBricksBlock extends Block {
 
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return 0;
+    }
+
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return state.get(POWERED) ? 15 : 0;
     }
 }

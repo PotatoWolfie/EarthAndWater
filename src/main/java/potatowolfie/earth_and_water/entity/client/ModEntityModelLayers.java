@@ -11,4 +11,12 @@ public class ModEntityModelLayers {
 
     public static final EntityModelLayer WATER_CHARGE =
             new EntityModelLayer(Identifier.of(EarthWater.MOD_ID, "water_charge"), "main");
+
+    public static final EntityModelLayer BORE = new EntityModelLayer(
+            Identifier.of("earth-and-water", "bore"), "main"
+    );
+
+    public static final EntityModelLayer SPIKED_SHIELD = new EntityModelLayer(
+            Identifier.of("earth-and-water", "spiked_shield"), "main"
+    );
 }

@@ -1,3 +1,6 @@
-// 1.21.1	2025-05-11T22:41:40.028159	Earth & Water/Tags for minecraft:block
-966d63fe456c1f2f8bf040e33488d4db0fe86019 data\minecraft\tags\block\walls.json
-d242997e64f9eedec67a7322f88589fa6dde43ce data\minecraft\tags\block\mineable\pickaxe.json
+// 1.21.1	2025-05-20T23:59:49.7527522	Earth & Water/Tags for minecraft:block
+ce44a777a404616f21a6d69387d92b7c2f426901 data\minecraft\tags\block\slabs.json
+775d81c0f2a5987aabf554541f108306aa99c512 data\minecraft\tags\block\walls.json
+b0ab43074b6491fd52b00d039f78dd14a78021ef data\minecraft\tags\block\replaceable.json
+b8cbb0213d88bcc99477752226935877eb3f597e data\minecraft\tags\block\mineable\pickaxe.json
+c3158925a939e863900bfc85428943d4d2c20b41 data\minecraft\tags\block\stairs.json

@@ -77,11 +77,10 @@ public class ModBlocks {
                     .luminance(state -> state.get(ChiseledDripstoneBricksBlock.POWERED) ? 12 : 0)));
     public static final Block CHISELED_DARK_DRIPSTONE_BRICKS = registerBlock("chiseled_dark_dripstone_bricks",
             new ChiseledDarkDripstoneBricksBlock(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.TERRACOTTA_BROWN)
+                    .mapColor(MapColor.DIAMOND_BLUE)
                     .instrument(NoteBlockInstrument.BASEDRUM)
-                    .sounds(BlockSoundGroup.DRIPSTONE_BLOCK)
                     .requiresTool()
-                    .strength(1.5F, 1.0F)
+                    .strength(1.5F, 6.0F)
                     .luminance(state -> state.get(ChiseledDarkDripstoneBricksBlock.POWERED) ? 12 : 0)));
 
     public static final Block DARK_DRIPSTONE_BLOCK = registerBlock("dark_dripstone_block",
@@ -118,6 +117,7 @@ public class ModBlocks {
             new PointedDarkDripstoneBlock(AbstractBlock.Settings.create()
                     .mapColor(MapColor.TERRACOTTA_BROWN)
                     .solid()
+                    .requiresTool()
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .nonOpaque()
                     .sounds(BlockSoundGroup.POINTED_DRIPSTONE)
@@ -128,39 +128,8 @@ public class ModBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY)
                     .solidBlock(Blocks::never)));
 
-    public static final Block ANDESITE_BRICKS = registerBlock("andesite_bricks",
-            new Block(AbstractBlock.Settings.copy(ANDESITE)));
-    public static final Block ANDESITE_BRICK_STAIRS = registerBlock("andesite_brick_stairs",
-            new StairsBlock(ModBlocks.ANDESITE_BRICKS.getDefaultState(),
-                    AbstractBlock.Settings.copy(ANDESITE)));
-    public static final Block ANDESITE_BRICK_SLAB = registerBlock("andesite_brick_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(ANDESITE)));
-    public static final Block ANDESITE_BRICK_WALL = registerBlock("andesite_brick_wall",
-            new WallBlock(AbstractBlock.Settings.copy(ANDESITE)));
-
-    public static final Block DIORITE_BRICKS = registerBlock("diorite_bricks",
-            new Block(AbstractBlock.Settings.copy(DIORITE)));
-    public static final Block DIORITE_BRICK_STAIRS = registerBlock("diorite_brick_stairs",
-            new StairsBlock(ModBlocks.DIORITE_BRICKS.getDefaultState(),
-                    AbstractBlock.Settings.copy(DIORITE)));
-    public static final Block DIORITE_BRICK_SLAB = registerBlock("diorite_brick_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(DIORITE)));
-    public static final Block DIORITE_BRICK_WALL = registerBlock("diorite_brick_wall",
-            new WallBlock(AbstractBlock.Settings.copy(DIORITE)));
-
-
-    public static final Block GRANITE_BRICKS = registerBlock("granite_bricks",
-            new Block(AbstractBlock.Settings.copy(GRANITE)));
-    public static final Block GRANITE_BRICK_STAIRS = registerBlock("granite_brick_stairs",
-            new StairsBlock(ModBlocks.GRANITE_BRICKS.getDefaultState(),
-                    AbstractBlock.Settings.copy(GRANITE)));
-    public static final Block GRANITE_BRICK_SLAB = registerBlock("granite_brick_slab",
-            new SlabBlock(AbstractBlock.Settings.copy(GRANITE)));
-    public static final Block GRANITE_BRICK_WALL = registerBlock("granite_brick_wall",
-            new WallBlock(AbstractBlock.Settings.copy(GRANITE)));
-
     public static final Block CHISELED_PRISMARINE_BRICKS = registerBlock("chiseled_prismarine_bricks",
-            new ChiseledPrismarineBricksBlock(AbstractBlock.Settings.create().mapColor(MapColor.DIAMOND_BLUE)
+            new ChiseledPrismarineBricksBlock(AbstractBlock.Settings.create().mapColor(MapColor.CYAN)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6.0F)
                     .luminance(state -> state.get(ChiseledPrismarineBricksBlock.ACTIVE) ? 12 : 0)));
     public static final Block PRISMARINE_TILES = registerBlock("prismarine_tiles",
@@ -175,6 +144,8 @@ public class ModBlocks {
 
     public static final Block MIXED_PRISMARINE_TILES = registerBlock("mixed_prismarine_tiles",
             new Block(AbstractBlock.Settings.copy(PRISMARINE)));
+    public static final Block POLISHED_DRIPSTONE_TILES = registerBlock("polished_dripstone_tiles",
+            new Block(AbstractBlock.Settings.copy(POLISHED_DARK_DRIPSTONE)));
     public static final Block CHISELED_DARK_PRISMARINE = registerBlock("chiseled_dark_prismarine",
             new ChiseledDarkPrismarineBlock(AbstractBlock.Settings.create().mapColor(MapColor.DIAMOND_BLUE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.5F, 6.0F)));
@@ -231,7 +202,8 @@ public class ModBlocks {
         entries.addAfter(DRIPSTONE_BRICK_SLAB, DRIPSTONE_BRICK_WALL);
         entries.addAfter(DRIPSTONE_BRICK_WALL, CHISELED_DRIPSTONE_BRICKS);
         entries.addAfter(CHISELED_DRIPSTONE_BRICKS, DRIPSTONE_PILLAR);
-        entries.addAfter(DRIPSTONE_PILLAR, DARK_DRIPSTONE_BLOCK);
+        entries.addAfter(DRIPSTONE_PILLAR, POLISHED_DRIPSTONE_TILES);
+        entries.addAfter(POLISHED_DRIPSTONE_TILES, DARK_DRIPSTONE_BLOCK);
         entries.addAfter(DARK_DRIPSTONE_BLOCK, DARK_DRIPSTONE_STAIRS);
         entries.addAfter(DARK_DRIPSTONE_STAIRS, DARK_DRIPSTONE_SLAB);
         entries.addAfter(DARK_DRIPSTONE_SLAB, DARK_DRIPSTONE_WALL);
@@ -245,18 +217,6 @@ public class ModBlocks {
         entries.addAfter(DARK_DRIPSTONE_BRICK_SLAB, DARK_DRIPSTONE_BRICK_WALL);
         entries.addAfter(DARK_DRIPSTONE_BRICK_WALL, CHISELED_DARK_DRIPSTONE_BRICKS);
         entries.addAfter(CHISELED_DARK_DRIPSTONE_BRICKS, DARK_DRIPSTONE_PILLAR);
-        entries.addAfter(POLISHED_ANDESITE_SLAB, ANDESITE_BRICKS);
-        entries.addAfter(ANDESITE_BRICKS, ANDESITE_BRICK_STAIRS);
-        entries.addAfter(ANDESITE_BRICK_STAIRS, ANDESITE_BRICK_SLAB);
-        entries.addAfter(ANDESITE_BRICK_SLAB, ANDESITE_BRICK_WALL);
-        entries.addAfter(POLISHED_DIORITE_SLAB, DIORITE_BRICKS);
-        entries.addAfter(DIORITE_BRICKS, DIORITE_BRICK_STAIRS);
-        entries.addAfter(DIORITE_BRICK_STAIRS, DIORITE_BRICK_SLAB);
-        entries.addAfter(DIORITE_BRICK_SLAB, DIORITE_BRICK_WALL);
-        entries.addAfter(POLISHED_GRANITE_SLAB, GRANITE_BRICKS);
-        entries.addAfter(GRANITE_BRICKS, GRANITE_BRICK_STAIRS);
-        entries.addAfter(GRANITE_BRICK_STAIRS, GRANITE_BRICK_SLAB);
-        entries.addAfter(GRANITE_BRICK_SLAB, GRANITE_BRICK_WALL);
         entries.addAfter(PRISMARINE_BRICK_SLAB, CHISELED_PRISMARINE_BRICKS);
         entries.addAfter(CHISELED_PRISMARINE_BRICKS, PRISMARINE_TILES);
         entries.addAfter(PRISMARINE_TILES, PRISMARINE_TILE_STAIRS);

@@ -3,8 +3,6 @@ package potatowolfie.earth_and_water.block.custom;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -17,8 +15,6 @@ import net.minecraft.world.World;
 import potatowolfie.earth_and_water.EarthWater;
 
 import java.util.List;
-
-import static potatowolfie.earth_and_water.block.custom.ChiseledPrismarineBricksBlock.ACTIVE;
 
 public class ChiseledDripstoneBricksBlock extends Block {
     public static final BooleanProperty POWERED = BooleanProperty.of("powered");
@@ -98,6 +94,16 @@ public class ChiseledDripstoneBricksBlock extends Block {
 
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return 0;
+    }
+
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return state.get(POWERED) ? 15 : 0;
     }
 }

@@ -44,11 +44,6 @@ public class ModModelProvider extends FabricModelProvider {
         dripstoneTexturePool.slab(ModBlocks.DRIPSTONE_SLAB);
         dripstoneTexturePool.wall(ModBlocks.DRIPSTONE_WALL);
 
-        BlockStateModelGenerator.BlockTexturePool andesitebrickTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.ANDESITE_BRICKS);
-        andesitebrickTexturePool.stairs(ModBlocks.ANDESITE_BRICK_STAIRS);
-        andesitebrickTexturePool.slab(ModBlocks.ANDESITE_BRICK_SLAB);
-        andesitebrickTexturePool.wall(ModBlocks.ANDESITE_BRICK_WALL);
-
         polisheddripstoneTexturePool.stairs(ModBlocks.POLISHED_DRIPSTONE_STAIRS);
         polisheddripstoneTexturePool.slab(ModBlocks.POLISHED_DRIPSTONE_SLAB);
         polisheddripstoneTexturePool.wall(ModBlocks.POLISHED_DRIPSTONE_WALL);
@@ -57,16 +52,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OXYGEN_BLOCK);
 
         blockStateModelGenerator.registerGeneric(ModBlocks.MIXED_PRISMARINE_TILES);
-
-        BlockStateModelGenerator.BlockTexturePool dioritebricksTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.DIORITE_BRICKS);
-        dioritebricksTexturePool.stairs(ModBlocks.DIORITE_BRICK_STAIRS);
-        dioritebricksTexturePool.slab(ModBlocks.DIORITE_BRICK_SLAB);
-        dioritebricksTexturePool.wall(ModBlocks.DIORITE_BRICK_WALL);
-
-        BlockStateModelGenerator.BlockTexturePool granitebricksTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GRANITE_BRICKS);
-        granitebricksTexturePool.stairs(ModBlocks.GRANITE_BRICK_STAIRS);
-        granitebricksTexturePool.slab(ModBlocks.GRANITE_BRICK_SLAB);
-        granitebricksTexturePool.wall(ModBlocks.GRANITE_BRICK_WALL);
+        blockStateModelGenerator.registerGeneric(ModBlocks.POLISHED_DRIPSTONE_TILES);
 
         BlockStateModelGenerator.BlockTexturePool prismarinetilesTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PRISMARINE_TILES);
         prismarinetilesTexturePool.stairs(ModBlocks.PRISMARINE_TILE_STAIRS);
@@ -82,6 +68,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.BORE_ROD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BORE_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.BRINE_ROD, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPIKED_SHIELD_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);

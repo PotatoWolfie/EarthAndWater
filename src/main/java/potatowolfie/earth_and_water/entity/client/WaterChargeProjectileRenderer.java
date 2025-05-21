@@ -30,7 +30,14 @@ public class WaterChargeProjectileRenderer extends EntityRenderer <WaterChargePr
 
             matrixStack.translate(0, 1.525, 0);
 
-            if (waterChargeProjectileEntity.isGrounded() || waterChargeProjectileEntity.isStuck()) {
+            if (waterChargeProjectileEntity.isStuck()) {
+                if (waterChargeProjectileEntity.isStuckToEntity()) {
+                    matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(waterChargeProjectileEntity.getRenderingRotation()));
+                } else {
+                    matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(waterChargeProjectileEntity.getYaw()));
+                    matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(waterChargeProjectileEntity.getPitch()));
+                }
+            } else if (waterChargeProjectileEntity.isGrounded()) {
                 matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(waterChargeProjectileEntity.getYaw()));
                 matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(waterChargeProjectileEntity.getPitch()));
             }

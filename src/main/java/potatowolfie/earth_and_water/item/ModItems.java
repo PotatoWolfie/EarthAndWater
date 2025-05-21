@@ -10,9 +10,11 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.text.Text;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import potatowolfie.earth_and_water.EarthWater;
+import potatowolfie.earth_and_water.entity.ModEntities;
 import potatowolfie.earth_and_water.item.custom.*;
 
 import java.util.List;
@@ -20,6 +22,9 @@ import java.util.List;
 public class ModItems {
     public static final Item BRINE_ROD = registerItem( "brine_rod", new Item(new Item.Settings()));
     public static final Item BORE_ROD = registerItem( "bore_rod", new Item(new Item.Settings()));
+    public static final Item BORE_SPAWN_EGG = registerItem( "bore_spawn_egg", new EarthAndWaterSpawnEggItem(ModEntities.BORE, new Item.Settings())
+    );
+
     public static final Item STEEL_INGOT = registerItem("steel_ingot", new Item(new Item.Settings()));
     public static final Item EARTH_CHARGE = registerItem("earth_charge", new EarthChargeItem(new Item.Settings()));
     public static final Item WATER_CHARGE = registerItem("water_charge", new WaterChargeItem(new Item.Settings()));
@@ -50,8 +55,10 @@ public class ModItems {
     public static final Item BATTLE_AXE = registerItem("battle_axe",
             new BattleAxeItem(ModToolMaterials.STEEL, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.STEEL, 5.0F, -3.2F)).rarity(Rarity.UNCOMMON))
     );
-    public static final Item SPIKED_SHIELD = registerItem("spiked_shield", 
-            new SpikedShieldItem(new Item.Settings().maxDamage(556).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT)));
+    public static final Item SPIKED_SHIELD = Registry.register(Registries.ITEM,
+            Identifier.of(EarthWater.MOD_ID, "spiked_shield"),
+            new SpikedShieldItem(new Item.Settings().maxCount(1).maxDamage(556))
+    );
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(EarthWater.MOD_ID, name), item);

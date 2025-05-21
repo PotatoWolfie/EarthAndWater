@@ -27,25 +27,22 @@ public class ExplosionUtil {
         );
 
         for (LivingEntity entity : entities) {
+            if (entity == directHit) {
+                continue;
+            }
+
             double dx = entity.getX() - pos.x;
             double dy = entity.getY() - pos.y;
             double dz = entity.getZ() - pos.z;
             double dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-            if (dist == 0) continue;
-
-            double strength = 1.0 - (dist / radius);
+            if (dist <= 0.001) dist = 0.001;
+            double strength = Math.max(0.7, 1.0 - (dist / radius) * 0.3);
 
             Vec3d direction = new Vec3d(dx, dy, dz).normalize();
-            double knockbackAmount = (entity == directHit) ? directHitKnockback : areaKnockback;
-            Vec3d knockback = direction.multiply(strength * knockbackAmount);
+            Vec3d knockback = direction.multiply(strength * areaKnockback);
 
-            if (entity == directHit) {
-                entity.setVelocity(knockback.x, knockback.y + 0.1, knockback.z);
-            } else {
-                entity.addVelocity(knockback.x, knockback.y + 0.05, knockback.z);
-            }
-
+            entity.addVelocity(knockback.x, knockback.y + 0.05, knockback.z);
             entity.velocityDirty = true;
 
             DamageSource source = world.getDamageSources().explosion(null);

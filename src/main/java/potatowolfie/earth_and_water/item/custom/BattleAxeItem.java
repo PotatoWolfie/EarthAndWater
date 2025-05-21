@@ -19,9 +19,7 @@ public class BattleAxeItem extends AxeItem {
     private static final int DASH_COOLDOWN = 45;
     private static final int CREATIVE_DASH_COOLDOWN = 10;
     private static final float DASH_STRENGTH = 1.1383f;
-    private static final float MIDAIR_DASH_STRENGTH = 0.65f;
-    private static final float Y_DASH_STRENGTH = 0.8f;
-    private static final float MIDAIR_Y_DASH_STRENGTH = 0.76f;
+    private static final float MIDAIR_DASH_STRENGTH = 1.1f;
     private static final int DASH_DISTANCE = 4;
     private static final float DASH_DAMAGE = 5.0f;
     private static final int SHIELD_DISABLE_DURATION = 100;
@@ -84,27 +82,19 @@ public class BattleAxeItem extends AxeItem {
 
         if (!world.isClient) {
             Vec3d lookVec = player.getRotationVector();
-            double horizontalLength = Math.sqrt(lookVec.x * lookVec.x + lookVec.z * lookVec.z);
-            if (horizontalLength > 0) {
-                lookVec = new Vec3d(
-                        lookVec.x / horizontalLength,
-                        Math.max(0, lookVec.y * 0.3),
-                        lookVec.z / horizontalLength
-                );
-            }
-
+            float verticalScalingFactor = (float) (1.0f - 0.3f * Math.max(0, lookVec.y));
             boolean isInAir = !player.isOnGround();
             float currentDashStrength = isInAir ? MIDAIR_DASH_STRENGTH : DASH_STRENGTH;
-            float currentYDashStrength = isInAir ? MIDAIR_Y_DASH_STRENGTH : Y_DASH_STRENGTH;
 
             Vec3d dashVec = new Vec3d(
                     lookVec.x * currentDashStrength,
-                    lookVec.y * currentYDashStrength,
+                    lookVec.y * currentDashStrength * verticalScalingFactor,
                     lookVec.z * currentDashStrength
             );
 
             player.setVelocity(dashVec);
             player.velocityModified = true;
+
             Vec3d playerPos = player.getPos();
             Vec3d dashEnd = playerPos.add(dashVec.multiply(DASH_DISTANCE));
             Box collisionBox = new Box(

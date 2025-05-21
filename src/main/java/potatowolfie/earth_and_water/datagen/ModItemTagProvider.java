@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
+import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -28,6 +30,22 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
                 .add(ModItems.BATTLE_AXE)
                 .add(ModItems.WHIP);
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.BATTLE_AXE)
+                .add(ModItems.WHIP)
+                .add(ModItems.SPIKED_SHIELD);
+        getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+                .add(ModItems.BATTLE_AXE);
+        getOrCreateTagBuilder(ItemTags.WEAPON_ENCHANTABLE)
+                .add(ModItems.BATTLE_AXE)
+                .add(ModItems.WHIP);
+        getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+                .add(ModItems.BATTLE_AXE);
 
+        getOrCreateTagBuilder(ItemTags.TRIM_TEMPLATES)
+                .add(ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE)
+                .add(ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE);
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
+                .add(ModItems.STEEL_INGOT);
     }
 }
