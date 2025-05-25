@@ -57,7 +57,7 @@ public class ModItems {
     );
     public static final Item SPIKED_SHIELD = Registry.register(Registries.ITEM,
             Identifier.of(EarthWater.MOD_ID, "spiked_shield"),
-            new SpikedShieldItem(new Item.Settings().maxCount(1).maxDamage(556))
+            new SpikedShieldItem(new Item.Settings().maxCount(1).maxDamage(556).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT))
     );
 
     private static Item registerItem(String name, Item item) {

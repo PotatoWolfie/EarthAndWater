@@ -29,6 +29,21 @@ public abstract class ShieldDecorationRecipeMixin extends SpecialCraftingRecipe 
     private void injectedMatches(CraftingRecipeInput input, World world, CallbackInfoReturnable<Boolean> cir) {
         ItemStack shield = ItemStack.EMPTY;
         ItemStack banner = ItemStack.EMPTY;
+        boolean hasSpikedShield = false;
+
+        for (int i = 0; i < input.getSize(); ++i) {
+            ItemStack stack = input.getStackInSlot(i);
+            if (stack.isEmpty()) continue;
+
+            if (stack.isIn(ModTags.Item.SPIKED_SHIELD)) {
+                hasSpikedShield = true;
+                break;
+            }
+        }
+
+        if (!hasSpikedShield) {
+            return;
+        }
 
         for (int i = 0; i < input.getSize(); ++i) {
             ItemStack stack = input.getStackInSlot(i);
@@ -66,16 +81,22 @@ public abstract class ShieldDecorationRecipeMixin extends SpecialCraftingRecipe 
     private void injectedCraft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup lookup, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack banner = ItemStack.EMPTY;
         ItemStack shield = ItemStack.EMPTY;
+        boolean hasSpikedShield = false;
 
         for (int i = 0; i < input.getSize(); ++i) {
             ItemStack stack = input.getStackInSlot(i);
             if (stack.isEmpty()) continue;
 
-            if (stack.getItem() instanceof BannerItem) {
-                banner = stack;
-            } else if (stack.isIn(ModTags.Item.SPIKED_SHIELD)) {
+            if (stack.isIn(ModTags.Item.SPIKED_SHIELD)) {
+                hasSpikedShield = true;
                 shield = stack.copy();
+            } else if (stack.getItem() instanceof BannerItem) {
+                banner = stack;
             }
+        }
+
+        if (!hasSpikedShield) {
+            return;
         }
 
         if (shield.isEmpty()) {

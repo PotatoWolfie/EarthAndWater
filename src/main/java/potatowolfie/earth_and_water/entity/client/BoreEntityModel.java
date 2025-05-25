@@ -89,12 +89,11 @@ public class BoreEntityModel extends EntityModel<BoreEntity> {
 						.cuboid(-1.0F, 6.0F, 0.0F, 3.0F, 4.0F, 0.0F, new Dilation(0.0F)),
 				ModelTransform.of(-2.5F, 0.0F, 0.0F, -0.0078F, -0.0231F, -0.1285F));
 
-		return TexturedModelData.of(modelData, 32, 32); // Make sure your texture file is 32x32 or adjust accordingly
+		return TexturedModelData.of(modelData, 32, 32);
 	}
 
 	@Override
 	public void setAngles(BoreEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		// This mob has no AI or animation, so this method is intentionally left empty
 	}
 
 	@Override

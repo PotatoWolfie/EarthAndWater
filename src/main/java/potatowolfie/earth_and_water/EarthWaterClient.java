@@ -10,34 +10,23 @@ import net.minecraft.block.entity.BannerPattern;
 import net.minecraft.block.entity.BannerPatterns;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.particle.EndRodParticle;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.model.ShieldEntityModel;
-import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
-import net.minecraft.util.UseAction;
-import net.minecraft.util.math.RotationAxis;
-import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.entity.ModEntities;
@@ -53,7 +42,7 @@ import java.util.Map;
 public class EarthWaterClient implements ClientModInitializer {
 
     public static final EntityModelLayer SPIKED_SHIELD = new EntityModelLayer(
-            Identifier.of("earth-and-water", "spiked_shield"), "main"
+            Identifier.of(EarthWater.MOD_ID, "spiked_shield"), "main"
     );
 
     private static final Vector3f POSITIVE_X = new Vector3f(1.0F, 0.0F, 0.0F);
@@ -90,43 +79,89 @@ public class EarthWaterClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(ModItems.SPIKED_SHIELD, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
             MinecraftClient client = MinecraftClient.getInstance();
             SpikedShieldEntityModel model = new SpikedShieldEntityModel(client.getEntityModelLoader().getModelPart(SPIKED_SHIELD));
-
             matrices.push();
-
             applyDisplayTransform(matrices, mode.name().toLowerCase());
 
-            boolean hasPattern = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA) != null;
+            List<Pair<RegistryKey<BannerPattern>, DyeColor>> patterns = new ArrayList<>();
+            DyeColor baseColor = DyeColor.WHITE;
+            boolean hasBannerData = false;
 
-            SpriteIdentifier baseSprite = new SpriteIdentifier(
-                    TexturedRenderLayers.SHIELD_PATTERNS_ATLAS_TEXTURE,
-                    Identifier.of("earth-and-water", "entity/spiked_shield_base")
-            );
-            VertexConsumer baseConsumer = baseSprite.getSprite().getTextureSpecificVertexConsumer(
-                    vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(baseSprite.getAtlasId()))
-            );
+            if (stack.contains(DataComponentTypes.BANNER_PATTERNS)) {
+                var bannerPatterns = stack.get(DataComponentTypes.BANNER_PATTERNS);
+                if (bannerPatterns != null && !bannerPatterns.layers().isEmpty()) {
+                    hasBannerData = true;
+                    for (var layer : bannerPatterns.layers()) {
+                        patterns.add(new Pair<>(layer.pattern().getKey().orElse(null), layer.color()));
+                    }
+                }
+            }
 
-            model.getHandle().render(matrices, baseConsumer, light, overlay);
-            model.getPlate().render(matrices, baseConsumer, light, overlay);
+            if (stack.contains(DataComponentTypes.BASE_COLOR)) {
+                baseColor = stack.get(DataComponentTypes.BASE_COLOR);
+                hasBannerData = true;
+            }
 
-            if (hasPattern) {
+            if (!hasBannerData) {
                 NbtComponent blockEntityData = stack.get(DataComponentTypes.BLOCK_ENTITY_DATA);
                 if (blockEntityData != null) {
                     NbtCompound nbt = blockEntityData.copyNbt();
-                    List<Pair<RegistryKey<BannerPattern>, DyeColor>> patterns = getPatternsFromNbt(nbt);
-
-                    for (int i = 0; i < patterns.size() && i < 17; ++i) {
-                        Pair<RegistryKey<BannerPattern>, DyeColor> pair = patterns.get(i);
-                        Identifier patternTexture = Identifier.of("minecraft", "entity/shield/" + pair.getLeft().getRegistry());
-                        SpriteIdentifier patternSprite = new SpriteIdentifier(TexturedRenderLayers.SHIELD_PATTERNS_ATLAS_TEXTURE, patternTexture);
-
-                        VertexConsumer patternConsumer = patternSprite.getSprite().getTextureSpecificVertexConsumer(
-                                vertexConsumers.getBuffer(RenderLayer.getEntityNoOutline(patternSprite.getAtlasId()))
-                        );
-
-                        int color = pair.getRight().getFireworkColor();
-                        model.getPlate().render(matrices, patternConsumer, light, overlay, color);
+                    if (nbt.contains("Base") || (nbt.contains("Patterns") && !nbt.getList("Patterns", NbtElement.COMPOUND_TYPE).isEmpty())) {
+                        var patternsFromNbt = getPatternsFromNbt(nbt);
+                        if (!patternsFromNbt.isEmpty()) {
+                            baseColor = patternsFromNbt.get(0).getRight();
+                            for (int i = 1; i < patternsFromNbt.size(); i++) {
+                                patterns.add(patternsFromNbt.get(i));
+                            }
+                            hasBannerData = true;
+                        }
                     }
                 }
+            }
+
+            Identifier baseTextureId = hasBannerData
+                    ? Identifier.of(EarthWater.MOD_ID, "textures/entity/spiked_shield_base.png")
+                    : Identifier.of(EarthWater.MOD_ID, "textures/entity/spiked_shield_base_nopattern.png");
+
+            VertexConsumer baseConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(baseTextureId));
+
+            model.getHandle().render(matrices, baseConsumer, light, overlay);
+
+            if (hasBannerData) {
+                model.getPlate().render(matrices, baseConsumer, light, overlay);
+
+                if (baseColor != DyeColor.WHITE) {
+                    SpriteIdentifier baseSprite = new SpriteIdentifier(
+                            TexturedRenderLayers.SHIELD_PATTERNS_ATLAS_TEXTURE,
+                            Identifier.of("minecraft", "entity/shield/base")
+                    );
+
+                    VertexConsumer basePatternConsumer = baseSprite.getSprite().getTextureSpecificVertexConsumer(
+                            vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(baseSprite.getAtlasId()))
+                    );
+
+                    int baseColorValue = baseColor.getFireworkColor();
+                    model.getPlate().render(matrices, basePatternConsumer, light, overlay, baseColorValue);
+                }
+
+                for (int i = 0; i < patterns.size() && i < 16; i++) {
+                    Pair<RegistryKey<BannerPattern>, DyeColor> pair = patterns.get(i);
+                    if (pair.getLeft() == null) continue;
+
+                    Identifier patternTexture = Identifier.of("minecraft", "entity/shield/" + pair.getLeft().getValue().getPath());
+                    SpriteIdentifier patternSprite = new SpriteIdentifier(
+                            TexturedRenderLayers.SHIELD_PATTERNS_ATLAS_TEXTURE,
+                            patternTexture
+                    );
+
+                    VertexConsumer patternConsumer = patternSprite.getSprite().getTextureSpecificVertexConsumer(
+                            vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(patternSprite.getAtlasId()))
+                    );
+
+                    int color = pair.getRight().getFireworkColor();
+                    model.getPlate().render(matrices, patternConsumer, light, overlay, color);
+                }
+            } else {
+                model.getPlate().render(matrices, baseConsumer, light, overlay);
             }
 
             matrices.pop();

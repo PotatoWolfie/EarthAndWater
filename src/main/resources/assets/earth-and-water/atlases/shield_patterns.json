@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "entity/spiked_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "entity/spiked_shield_base_nopattern"
+    }
+  ]
+}
