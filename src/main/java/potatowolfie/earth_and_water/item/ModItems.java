@@ -26,6 +26,7 @@ public class ModItems {
     );
 
     public static final Item STEEL_INGOT = registerItem("steel_ingot", new Item(new Item.Settings()));
+    public static final Item STEEL_NUGGET = registerItem("steel_nugget", new Item(new Item.Settings()));
     public static final Item EARTH_CHARGE = registerItem("earth_charge", new EarthChargeItem(new Item.Settings()));
     public static final Item WATER_CHARGE = registerItem("water_charge", new WaterChargeItem(new Item.Settings()));
     public static final Item REINFORCED_KEY = registerItem("reinforced_key",
@@ -67,6 +68,7 @@ public class ModItems {
         entries.addBefore(Items.BLAZE_ROD, BORE_ROD);
         entries.addAfter(Items.BLAZE_ROD, BRINE_ROD);
         entries.addAfter(Items.IRON_INGOT, STEEL_INGOT);
+        entries.addAfter(Items.IRON_NUGGET, STEEL_NUGGET);
         entries.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, SPIKED_SHIELD_UPGRADE_SMITHING_TEMPLATE);
         entries.addAfter(Items.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE, BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE);
         entries.addAfter(BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE, GUARD_ARMOR_TRIM_SMITHING_TEMPLATE);

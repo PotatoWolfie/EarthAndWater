@@ -3,6 +3,7 @@
   "item.earth-and-water.bore_rod": "Bore Rod",
   "item.earth-and-water.bore_spawn_egg": "Bore Spawn Egg",
   "item.earth-and-water.steel_ingot": "Steel Ingot",
+  "item.earth-and-water.steel_nugget": "Steel Nugget",
   "item.earth-and-water.reinforced_key": "Reinforced Key",
   "tooltip.earth-and-water.reinforced_key": "Used to activate or deactivate Reinforced Spawners. Has 2 uses.",
   "item.earth-and-water.spiked_shield_upgrade_smithing_template": "Smithing Template",
@@ -38,8 +39,8 @@
   "block.earth-and-water.oxygen_block": "Oxygen Block",
   "block.earth-and-water.oxygen_bubble": "Oxygen Bubble",
 
-  "painting.earth-and-water.ruins.title": "Ruins",
-  "painting.earth-and-water.ruins.author": "Demidiant",
+  "painting.earth-and-water.spawner.title": "Spawner",
+  "painting.earth-and-water.spawner.author": "Demidiant",
 
   "block.earth-and-water.dark_prismarine_pillar": "Dark Prismarine Pillar",
   "block.earth-and-water.prismarine_pillar": "Prismarine Pillar",
@@ -125,5 +126,10 @@
 
   "entity.earth-and-water.earth_charge": "Earth Charge",
   "entity.earth-and-water.water_charge": "Water Charge",
-  "entity.earth-and-water.bore": "Bore"
+  "entity.earth-and-water.bore": "Bore",
+
+  "sounds.earth-and-water.battle_axe_dash": "Battle Axe Dashing",
+
+  "death.attack.battle_axe": "%1$s was cleaved by %2$s",
+  "death.attack.battle_axe.item": "%1$s was cleaved by %2$s using %3$s"
 }

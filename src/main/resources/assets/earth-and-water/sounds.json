@@ -1,0 +1,9 @@
+{
+  "battle_axe_dash": {
+    "subtitle": "sounds.earth-and-water.battle_axe_dash",
+    "sounds": [
+      "earth-and-water:battle_axe_dash_1",
+      "earth-and-water:battle_axe_dash_2"
+    ]
+  }
+}

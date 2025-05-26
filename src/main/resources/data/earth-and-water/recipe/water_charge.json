@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "earth-and-water:brine_rod"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "earth-and-water:water_charge"
+  }
+}

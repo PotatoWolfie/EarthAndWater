@@ -71,6 +71,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BORE_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.BRINE_ROD, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STEEL_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPIKED_SHIELD_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE, Models.GENERATED);

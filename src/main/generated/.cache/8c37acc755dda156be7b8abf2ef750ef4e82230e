@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-20T23:59:49.7457731	Earth & Water/Model Definitions
+// 1.21.1	2025-05-25T18:44:12.8816037	Earth & Water/Model Definitions
 111ff7cd20167c986b74570cb8aaa14b326e4aa7 assets\earth-and-water\models\block\prismarine_pillar_horizontal.json
 2b6e4c1226b5fecf36741dd1918a77ccf34c4aba assets\earth-and-water\blockstates\prismarine_tile_slab.json
 266fec7194676e9735040428752c0c8de5deccd5 assets\earth-and-water\models\item\polished_dark_dripstone_stairs.json
@@ -80,6 +80,7 @@ a061351d7af0a7a72b45c2fce1a5a9166c08f1c7 assets\earth-and-water\models\item\drip
 2505901645410846af3808820b2fe14f6da01de0 assets\earth-and-water\models\item\brine_rod.json
 df5f2aec2be63af6b069e4254865f49411a31db0 assets\earth-and-water\models\block\polished_dripstone_tiles.json
 41feafe832dfc97d882b2efc40f9da42c7a8887f assets\earth-and-water\models\block\dripstone_wall_inventory.json
+d48061445ce349f43e53fd31803ad521cfb20512 assets\earth-and-water\models\item\steel_nugget.json
 cc84e3242ee2054e4b07e3caa81adfe9a8f21e52 assets\earth-and-water\models\item\steel_block.json
 4bc85f066e3046c4a8af398b1c238cde42452621 assets\earth-and-water\models\item\dark_dripstone_brick_stairs.json
 fda084375210b2b765025c513efacd221cde3c90 assets\earth-and-water\blockstates\prismarine_pillar.json

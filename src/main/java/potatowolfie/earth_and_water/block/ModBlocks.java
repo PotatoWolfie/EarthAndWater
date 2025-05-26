@@ -25,8 +25,14 @@ import static net.minecraft.block.Blocks.*;
 
 public class ModBlocks {
     public static final Block STEEL_BLOCK = registerBlock("steel_block",
-            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL)
-                    .strength(6f).requiresTool()));
+            new Block(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.LIGHT_GRAY)
+                            .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                            .requiresTool()
+                            .strength(5.0F, 6.0F)
+                            .sounds(BlockSoundGroup.METAL)
+            ));
 
     public static final Block DRIPSTONE_PILLAR = registerBlock("dripstone_pillar",
             new PillarBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.DRIPSTONE_BLOCK)

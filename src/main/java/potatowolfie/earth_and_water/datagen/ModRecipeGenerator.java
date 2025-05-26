@@ -8,6 +8,7 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
@@ -16,6 +17,7 @@ import potatowolfie.earth_and_water.EarthWater;
 import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.item.ModItems;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeGenerator extends FabricRecipeProvider {
@@ -27,6 +29,22 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.STEEL_INGOT, RecipeCategory.MISC, ModBlocks.STEEL_BLOCK);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STEEL_INGOT, 1)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .input('X', ModItems.STEEL_NUGGET)
+                .criterion(hasItem(ModItems.STEEL_NUGGET), conditionsFromItem(ModItems.STEEL_NUGGET))
+                .offerTo(exporter, Identifier.of(EarthWater.MOD_ID, "steel_ingot_from_nuggets"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STEEL_NUGGET, 9)
+                .pattern("X")
+                .input('X', ModItems.STEEL_INGOT)
+                .criterion(hasItem(ModItems.STEEL_INGOT), conditionsFromItem(ModItems.STEEL_INGOT))
+                .offerTo(exporter);
+
+        offerSmelting(exporter, List.of(ModItems.STEEL_INGOT), RecipeCategory.MISC, ModItems.STEEL_NUGGET, 0.1f, 200, "steel");
+        offerBlasting(exporter, List.of(ModItems.STEEL_INGOT), RecipeCategory.MISC, ModItems.STEEL_NUGGET, 0.1f, 100, "steel");
 
         offerSmithingTrimRecipe(exporter, ModItems.BLOCK_ARMOR_TRIM_SMITHING_TEMPLATE, Identifier.of(EarthWater.MOD_ID, "block"));
         offerSmithingTrimRecipe(exporter, ModItems.GUARD_ARMOR_TRIM_SMITHING_TEMPLATE, Identifier.of(EarthWater.MOD_ID, "guard"));

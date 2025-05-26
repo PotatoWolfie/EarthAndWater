@@ -20,6 +20,7 @@ import potatowolfie.earth_and_water.block.ModBlocks;
 import potatowolfie.earth_and_water.effect.ModEffects;
 import potatowolfie.earth_and_water.entity.ModEntities;
 import potatowolfie.earth_and_water.item.ModItems;
+import potatowolfie.earth_and_water.sound.ModSounds;
 
 public class EarthWater implements ModInitializer {
 	public static final String MOD_ID = "earth-and-water";
@@ -33,6 +34,7 @@ public class EarthWater implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModEffects.registerEffects();
 		ModEntities.registerModEntities();
+		ModSounds.registerSounds();
 		Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "light_up"), LIGHT_UP);
 		Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MOD_ID, "shock_wave"), SHOCK_WAVE);
 

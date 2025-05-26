@@ -1,6 +1,7 @@
 package potatowolfie.earth_and_water.item.custom;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
@@ -12,6 +13,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import potatowolfie.earth_and_water.damage.ModDamageTypes;
+import potatowolfie.earth_and_water.sound.ModSounds;
 
 import java.util.List;
 
@@ -62,7 +65,6 @@ public class BattleAxeItem extends AxeItem {
                     if (shieldStack.getItem() instanceof ShieldItem || shieldStack.getItem() instanceof SpikedShieldItem) {
                         playerTarget.getItemCooldownManager().set(shieldStack.getItem(), SHIELD_DISABLE_DURATION);
                         playerTarget.clearActiveItem();
-
                         playerTarget.getWorld().sendEntityStatus(playerTarget, (byte)30);
                     }
                 }
@@ -115,7 +117,11 @@ public class BattleAxeItem extends AxeItem {
             boolean hitAnyMob = false;
 
             for (LivingEntity entity : entities) {
-                entity.damage(player.getDamageSources().playerAttack(player), DASH_DAMAGE);
+                DamageSource battleAxeDamage = new DamageSource(
+                        world.getRegistryManager().get(net.minecraft.registry.RegistryKeys.DAMAGE_TYPE).entryOf(ModDamageTypes.BATTLE_AXE),
+                        player
+                );
+                entity.damage(battleAxeDamage, DASH_DAMAGE);
                 entity.takeKnockback(0.5, -lookVec.x, -lookVec.z);
                 hitAnyMob = true;
             }
@@ -123,9 +129,9 @@ public class BattleAxeItem extends AxeItem {
             world.playSound(
                     null,
                     player.getX(), player.getY(), player.getZ(),
-                    SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP,
+                    ModSounds.BATTLE_AXE_DASH,
                     SoundCategory.PLAYERS,
-                    1.0F,
+                    0.7F,
                     1.0F
             );
 
